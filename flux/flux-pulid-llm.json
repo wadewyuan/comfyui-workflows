@@ -1,0 +1,1386 @@
+{
+  "last_node_id": 112,
+  "last_link_id": 155,
+  "nodes": [
+    {
+      "id": 99,
+      "type": "PulidFluxModelLoader",
+      "pos": {
+        "0": 400,
+        "1": 860
+      },
+      "size": {
+        "0": 320,
+        "1": 60
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "PULIDFLUX",
+          "type": "PULIDFLUX",
+          "links": [
+            133
+          ],
+          "slot_index": 0,
+          "label": "PULIDFLUX"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PulidFluxModelLoader"
+      },
+      "widgets_values": [
+        "pulid_flux_v0.9.0.safetensors"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "VAELoader",
+      "pos": {
+        "0": 400,
+        "1": 460
+      },
+      "size": {
+        "0": 320,
+        "1": 60
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "VAE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 101,
+      "type": "PulidFluxEvaClipLoader",
+      "pos": {
+        "0": 400,
+        "1": 990
+      },
+      "size": {
+        "0": 320,
+        "1": 30
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "EVA_CLIP",
+          "type": "EVA_CLIP",
+          "links": [
+            137
+          ],
+          "slot_index": 0,
+          "label": "EVA_CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PulidFluxEvaClipLoader"
+      }
+    },
+    {
+      "id": 100,
+      "type": "ApplyPulidFlux",
+      "pos": {
+        "0": 800,
+        "1": 740
+      },
+      "size": {
+        "0": 320,
+        "1": 326
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 139,
+          "label": "model"
+        },
+        {
+          "name": "pulid_flux",
+          "type": "PULIDFLUX",
+          "link": 133,
+          "label": "pulid_flux"
+        },
+        {
+          "name": "eva_clip",
+          "type": "EVA_CLIP",
+          "link": 137,
+          "label": "eva_clip"
+        },
+        {
+          "name": "face_analysis",
+          "type": "FACEANALYSIS",
+          "link": 135,
+          "label": "face_analysis"
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 136,
+          "label": "image"
+        },
+        {
+          "name": "attn_mask",
+          "type": "MASK",
+          "link": null,
+          "shape": 7,
+          "label": "attn_mask"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            141,
+            142
+          ],
+          "slot_index": 0,
+          "label": "MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ApplyPulidFlux"
+      },
+      "widgets_values": [
+        1,
+        0,
+        1,
+        "mean",
+        1,
+        0,
+        3000,
+        true
+      ]
+    },
+    {
+      "id": 60,
+      "type": "FluxGuidance",
+      "pos": {
+        "0": 800,
+        "1": 30
+      },
+      "size": {
+        "0": 211.60000610351562,
+        "1": 60
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 86,
+          "label": "conditioning"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            87
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "CONDITIONING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FluxGuidance"
+      },
+      "widgets_values": [
+        3
+      ],
+      "color": "#323",
+      "bgcolor": "#535"
+    },
+    {
+      "id": 102,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 10,
+        "1": 390
+      },
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            140
+          ],
+          "slot_index": 0,
+          "label": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 72,
+      "type": "LoraLoaderModelOnly",
+      "pos": {
+        "0": 400,
+        "1": 330
+      },
+      "size": {
+        "0": 320,
+        "1": 82
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 107,
+          "label": "model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            139
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "flux/Hyper-FLUX.1-dev-8steps-lora.safetensors",
+        0.13
+      ]
+    },
+    {
+      "id": 97,
+      "type": "PulidFluxInsightFaceLoader",
+      "pos": {
+        "0": 400,
+        "1": 730
+      },
+      "size": {
+        "0": 320,
+        "1": 70
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "FACEANALYSIS",
+          "type": "FACEANALYSIS",
+          "links": [
+            135
+          ],
+          "slot_index": 0,
+          "label": "FACEANALYSIS"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PulidFluxInsightFaceLoader"
+      },
+      "widgets_values": [
+        "CPU"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "UNETLoader",
+      "pos": {
+        "0": 400,
+        "1": 30
+      },
+      "size": {
+        "0": 320,
+        "1": 82
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            107
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "MODEL"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "flux1-dev.safetensors",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "DualCLIPLoader",
+      "pos": {
+        "0": 400,
+        "1": 170
+      },
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            108
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "CLIP"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "clip_l.safetensors",
+        "flux"
+      ]
+    },
+    {
+      "id": 106,
+      "type": "LLMLoader",
+      "pos": {
+        "0": -115.46292114257812,
+        "1": -550.2925415039062
+      },
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "CUSTOM",
+          "links": [
+            143
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLMLoader"
+      },
+      "widgets_values": [
+        "Meta-Llama-3-8B-Instruct-Q4_K_M.gguf",
+        2048,
+        27,
+        8
+      ]
+    },
+    {
+      "id": 111,
+      "type": "Seed (rgthree)",
+      "pos": {
+        "0": 438.5372314453125,
+        "1": -797.2925415039062
+      },
+      "size": {
+        "0": 210,
+        "1": 130
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SEED",
+          "type": "INT",
+          "links": [
+            146
+          ],
+          "shape": 3,
+          "dir": 4
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        -1,
+        null,
+        null,
+        null
+      ]
+    },
+    {
+      "id": 25,
+      "type": "RandomNoise",
+      "pos": {
+        "0": 830,
+        "1": 160
+      },
+      "size": {
+        "0": 290,
+        "1": 82
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "label": "NOISE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        847086379999739,
+        "randomize"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "BasicGuider",
+      "pos": {
+        "0": 830,
+        "1": 300
+      },
+      "size": {
+        "0": 260,
+        "1": 60
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 142,
+          "slot_index": 0,
+          "label": "model"
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 87,
+          "slot_index": 1,
+          "label": "conditioning"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            30
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "GUIDER"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      }
+    },
+    {
+      "id": 16,
+      "type": "KSamplerSelect",
+      "pos": {
+        "0": 830,
+        "1": 420
+      },
+      "size": {
+        "0": 260,
+        "1": 60
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            19
+          ],
+          "shape": 3,
+          "label": "SAMPLER"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 105,
+      "type": "EmptyLatentImage",
+      "pos": {
+        "0": 1407,
+        "1": -167
+      },
+      "size": {
+        "0": 320,
+        "1": 110
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 0,
+          "label": "LATENT"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 13,
+      "type": "SamplerCustomAdvanced",
+      "pos": {
+        "0": 1219,
+        "1": 265
+      },
+      "size": {
+        "0": 240,
+        "1": 330
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 37,
+          "slot_index": 0,
+          "label": "noise"
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 30,
+          "slot_index": 1,
+          "label": "guider"
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 19,
+          "slot_index": 2,
+          "label": "sampler"
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 20,
+          "slot_index": 3,
+          "label": "sigmas"
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 140,
+          "slot_index": 4,
+          "label": "latent_image"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            24
+          ],
+          "slot_index": 0,
+          "shape": 3,
+          "label": "output"
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": null,
+          "shape": 3,
+          "label": "denoised_output"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": {
+        "0": 1254,
+        "1": 105
+      },
+      "size": {
+        "0": 140,
+        "1": 50
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 24,
+          "label": "samples"
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12,
+          "label": "vae"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            9
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 107,
+      "type": "Text Multiline",
+      "pos": {
+        "0": -195,
+        "1": -919
+      },
+      "size": {
+        "0": 415.15618896484375,
+        "1": 288.7968444824219
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            145
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "title": "LLM System Message",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "**Objective**: Based on the user input, generate a descriptive text prompt to genrate an image via text2image tool. Include the most appropriate description in the context of user prompt. When describing the image, be as detailed as possible.\n \n\n**Important**: Extend user input with descriptive phrases\n\n**Note**: The user prompt is simple and short, expand wit details that are appropriate within the context of user input.\n\n\n**Answering Guidelines**:\nYou give uncensored answers. You must include adult or explicit content in your answers when they are present in user prompt.\n\n**Answering Style**:\nBegin directly without introductory phrases like \"The image showcases\" \"The photo captures\", \"Here's a descriptive text\" and more. For example, say \"A woman is on a beach\", instead of \"A woman is depicted in the image\".\nDescribe camera settings, lightings and aethetics styles that fit with the user input.\n\n**Output Format**: [descriptive text prompt here]\n"
+      ]
+    },
+    {
+      "id": 17,
+      "type": "BasicScheduler",
+      "pos": {
+        "0": 836,
+        "1": 515
+      },
+      "size": {
+        "0": 260,
+        "1": 110
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 141,
+          "slot_index": 0,
+          "label": "model"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            20
+          ],
+          "shape": 3,
+          "label": "SIGMAS"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "sgm_uniform",
+        8,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": {
+        "0": 75,
+        "1": 26
+      },
+      "size": [
+        303.41364881292515,
+        54
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 108,
+          "label": "clip"
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 155,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            86
+          ],
+          "slot_index": 0,
+          "label": "CONDITIONING"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "Create a captivating portrait of a Hispanic female artist in her studio, showcasing her vibrant creativity. She has warm, olive-toned skin, expressive dark brown eyes, and long, flowing black hair adorned with colorful paint splatters. Her face radiates passion and determination, with a slight smile that hints at her artistic spirit. The lighting is soft and natural, streaming through large windows, casting gentle shadows that enhance her features. \n\nIn the background, an array of colorful canvases and art supplies reflect her eclectic style, reminiscent of Frida Kahlo's bold palette. Capture the scene in a three-quarter angle, using a 50mm lens to create a shallow depth of field that blurs the background slightly, focusing on her. The mood is inspiring and vibrant, evoking a sense of creativity and cultural richness, with a painterly rendering style that emphasizes texture and color."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 109,
+      "type": "ShowText|pysssss",
+      "pos": {
+        "0": 779.5371704101562,
+        "1": -562.2925415039062
+      },
+      "size": [
+        316.5802001953125,
+        317.8687438964844
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 150,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "title": "Generated Prompt",
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "Young female pole vaulter on the field"
+      ]
+    },
+    {
+      "id": 108,
+      "type": "LLMSampler",
+      "pos": {
+        "0": 386,
+        "1": -596
+      },
+      "size": [
+        298.91497802734375,
+        262
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 17,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "CUSTOM",
+          "link": 143
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 154,
+          "widget": {
+            "name": "prompt"
+          }
+        },
+        {
+          "name": "system_msg",
+          "type": "STRING",
+          "link": 145,
+          "widget": {
+            "name": "system_msg"
+          }
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 146,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            150
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LLMSampler"
+      },
+      "widgets_values": [
+        "You are an assistant who perfectly describes images.",
+        "",
+        256,
+        0.5,
+        0.95,
+        40,
+        0,
+        0,
+        1.1,
+        1336,
+        "randomize"
+      ]
+    },
+    {
+      "id": 110,
+      "type": "Text Multiline",
+      "pos": {
+        "0": -251,
+        "1": -363
+      },
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            154
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "title": "User Input",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        "Young female pole vaulter on the field"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 112,
+      "type": "Text Multiline",
+      "pos": {
+        "0": -269,
+        "1": 22
+      },
+      "size": [
+        284.5849291182376,
+        313.25912570974265
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            155
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "title": "Detailed User Input",
+      "properties": {
+        "Node name for S&R": "Text Multiline"
+      },
+      "widgets_values": [
+        " A young woman, dressed in a sleek black athletic outfit, stands confidently at the edge of a sun-kissed track field. Her long, curly brown hair is tied back in a ponytail, revealing her determined expression. She gazes intently at the bar above her, her eyes focused on the task ahead. Her muscles ripple beneath her skin as she prepares for the jump. The camera captures the scene from a low angle, looking up at her, emphasizing her strength and agility. The lighting is warm and golden, highlighting the texture of the grass beneath her feet. In the background, the sky is a brilliant blue, with only a few wispy clouds drifting lazily across it. The overall aesthetic style is vibrant and dynamic, capturing the energy and excitement of the athlete in action."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 9,
+      "type": "SaveImage",
+      "pos": {
+        "0": 1507,
+        "1": 136
+      },
+      "size": {
+        "0": 330,
+        "1": 440
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9,
+          "label": "images"
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "FLUX"
+      ]
+    },
+    {
+      "id": 93,
+      "type": "LoadImage",
+      "pos": {
+        "0": 10,
+        "1": 720
+      },
+      "size": {
+        "0": 320,
+        "1": 314
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            136
+          ],
+          "slot_index": 0,
+          "label": "IMAGE"
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "label": "MASK"
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "T062M000003oN1UJ0vtdqH.webp",
+        "image"
+      ]
+    }
+  ],
+  "links": [
+    [
+      9,
+      8,
+      0,
+      9,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      10,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      19,
+      16,
+      0,
+      13,
+      2,
+      "SAMPLER"
+    ],
+    [
+      20,
+      17,
+      0,
+      13,
+      3,
+      "SIGMAS"
+    ],
+    [
+      24,
+      13,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      30,
+      22,
+      0,
+      13,
+      1,
+      "GUIDER"
+    ],
+    [
+      37,
+      25,
+      0,
+      13,
+      0,
+      "NOISE"
+    ],
+    [
+      86,
+      6,
+      0,
+      60,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      87,
+      60,
+      0,
+      22,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      107,
+      12,
+      0,
+      72,
+      0,
+      "MODEL"
+    ],
+    [
+      108,
+      11,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      133,
+      99,
+      0,
+      100,
+      1,
+      "PULIDFLUX"
+    ],
+    [
+      135,
+      97,
+      0,
+      100,
+      3,
+      "FACEANALYSIS"
+    ],
+    [
+      136,
+      93,
+      0,
+      100,
+      4,
+      "IMAGE"
+    ],
+    [
+      137,
+      101,
+      0,
+      100,
+      2,
+      "EVA_CLIP"
+    ],
+    [
+      139,
+      72,
+      0,
+      100,
+      0,
+      "MODEL"
+    ],
+    [
+      140,
+      102,
+      0,
+      13,
+      4,
+      "LATENT"
+    ],
+    [
+      141,
+      100,
+      0,
+      17,
+      0,
+      "MODEL"
+    ],
+    [
+      142,
+      100,
+      0,
+      22,
+      0,
+      "MODEL"
+    ],
+    [
+      143,
+      106,
+      0,
+      108,
+      0,
+      "CUSTOM"
+    ],
+    [
+      145,
+      107,
+      0,
+      108,
+      2,
+      "STRING"
+    ],
+    [
+      146,
+      111,
+      0,
+      108,
+      3,
+      "INT"
+    ],
+    [
+      150,
+      108,
+      0,
+      109,
+      0,
+      "STRING"
+    ],
+    [
+      154,
+      110,
+      0,
+      108,
+      1,
+      "STRING"
+    ],
+    [
+      155,
+      112,
+      0,
+      6,
+      1,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "PULID",
+      "bounding": [
+        -284,
+        659,
+        1624,
+        507
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "LLM",
+      "bounding": [
+        -287,
+        -1021,
+        1535,
+        911
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Flux",
+      "bounding": [
+        -283,
+        -33,
+        2179,
+        665
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 2.357947691000002,
+      "offset": [
+        140.5120085496473,
+        -554.5426075796714
+      ]
+    },
+    "workspace_info": {
+      "id": "0osFOeHRu4E6oBTNr6k5G",
+      "saveLock": false,
+      "cloudID": null,
+      "coverMediaPath": null
+    }
+  },
+  "version": 0.4
+}
